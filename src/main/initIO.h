@@ -14,8 +14,8 @@ byte PINOUT[6] = {
     INA_MOTOR_RIGHT, INB_MOTOR_RIGHT, PWM_MOTOR_RIGHT,
 };
 
-#define JOY_VRX A15
-#define JOY_VRY A14
+#define JOY_VRX A9
+#define JOY_VRY A8
 #define JOY_SW  23
 #define SIDE_SWITCH  25
 
@@ -24,24 +24,9 @@ byte PININ[4] = {
     SIDE_SWITCH
 };
 
-// byte TEST_ANALOG[16] = {
-//     A0,
-//     A1,
-//     A2,
-//     A3,
-//     A4,
-//     A5,
-//     A6,
-//     A7,
-//     A8,
-//     A9,
-//     A10,
-//     A11,
-//     A12,
-//     A13,
-//     A14,
-//     A15
-// };
-
+void initIO(){
+    for (byte i = 0;i < sizeof(PINOUT) / sizeof(byte);i++) pinMode(PINOUT[i], OUTPUT);
+    for (byte i = 0;i < sizeof(PININ) / sizeof(byte);i++) pinMode(PININ[i], INPUT_PULLUP);
+}
 
 #endif
