@@ -3,7 +3,8 @@
 #include <Arduino.h>
 #include "./initIO.h"
 
-uint8_t speed = 200;
+uint8_t defaultSpeed = 30;
+uint8_t speed = 30;
 float SPEED_OFFSET = 0.5;
 
 #define MOTOR_LEFT_FORWARD(pwm)    do{ digitalWrite(INA_MOTOR_LEFT, HIGH); digitalWrite(INB_MOTOR_LEFT, LOW);  analogWrite(PWM_MOTOR_LEFT, pwm); } while(0)

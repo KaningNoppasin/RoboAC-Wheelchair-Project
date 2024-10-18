@@ -15,6 +15,8 @@ const uint16_t MIN_JOY_VRX = 15;     // RIGHT
 const uint16_t MIN_JOY_VRY = 87;     // UP
 const uint16_t MIN_OFFSET = 300;
 
+bool isStop = false;
+
 uint16_t JOY_VRX_VALUE;
 uint16_t JOY_VRY_VALUE;
 
@@ -38,12 +40,14 @@ void joyController(
         (NORMAL_JOY_VRY + NORMAL_OFFSET > JOY_VRY_VALUE && JOY_VRY_VALUE > NORMAL_JOY_VRY - NORMAL_OFFSET))
     {
         if (callbackLeft != nullptr) callbackLeft();
+        isStop = false;
     }
     else if (
         MIN_JOY_VRX + MIN_OFFSET > JOY_VRX_VALUE &&
         (NORMAL_JOY_VRY + NORMAL_OFFSET > JOY_VRY_VALUE && JOY_VRY_VALUE > NORMAL_JOY_VRY - NORMAL_OFFSET))
     {
         if (callbackRight != nullptr) callbackRight();
+        isStop = false;
     }
     // JOY_VRY
     else if (
@@ -51,12 +55,14 @@ void joyController(
         (NORMAL_JOY_VRX + NORMAL_OFFSET > JOY_VRX_VALUE && JOY_VRX_VALUE > NORMAL_JOY_VRX - NORMAL_OFFSET))
     {
         if (callbackDown != nullptr) callbackDown();
+        isStop = false;
     }
     else if (
         MIN_JOY_VRY + MIN_OFFSET > JOY_VRY_VALUE &&
         (NORMAL_JOY_VRX + NORMAL_OFFSET > JOY_VRX_VALUE && JOY_VRX_VALUE > NORMAL_JOY_VRX - NORMAL_OFFSET))
     {
         if (callbackUp != nullptr) callbackUp();
+        isStop = false;
     }
     else if(
         (NORMAL_JOY_VRY + NORMAL_OFFSET > JOY_VRY_VALUE && JOY_VRY_VALUE > NORMAL_JOY_VRY - NORMAL_OFFSET) &&
@@ -64,10 +70,12 @@ void joyController(
     )
     {
         if (callbackStop != nullptr) callbackStop();
+        isStop = true;
     }
     // ↖
     //  ↘
     else{
+        isStop = false;
         // UP-LEFT
         if (
             JOY_VRY_VALUE < NORMAL_JOY_VRY - NORMAL_OFFSET &&

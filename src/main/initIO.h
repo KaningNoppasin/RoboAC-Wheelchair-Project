@@ -1,8 +1,11 @@
 #ifndef INIT_IO
 #define INIT_IO
 
-#define INA_MOTOR_LEFT 4
-#define INB_MOTOR_LEFT 3
+// #define INA_MOTOR_LEFT 4
+// #define INB_MOTOR_LEFT 3
+// #define PWM_MOTOR_LEFT 2
+#define INA_MOTOR_LEFT 3
+#define INB_MOTOR_LEFT 4
 #define PWM_MOTOR_LEFT 2
 
 #define INA_MOTOR_RIGHT 7
